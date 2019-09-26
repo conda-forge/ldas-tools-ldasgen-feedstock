@@ -1,6 +1,6 @@
 {% set name = "ldas-tools-ldasgen" %}
-{% set version = "2.6.3" %}
-{% set sha256 = "e999263c2341a3935b5030c83304ce423da0aee2b3f719a86a172e5dad5b74ba" %}
+{% set version = "2.7.0" %}
+{% set sha256 = "00e09df1e56b7168e81f36a55ceb127a7706bede52eafa8409f9c2c697067e2e" %}
 {% set ldas_tools_al_version = "2.6.2" %}
 
 package:
@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1003
+  number: 0
   skip: true  # [win]
 
 requirements:
