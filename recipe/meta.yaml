@@ -1,20 +1,20 @@
 {% set name = "ldas-tools-ldasgen" %}
-{% set version = "2.7.0" %}
-{% set sha256 = "00e09df1e56b7168e81f36a55ceb127a7706bede52eafa8409f9c2c697067e2e" %}
+{% set version = "2.7.1" %}
+{% set sha256 = "0d5f3404354636fd3a35a9408fc477143a4462cff54cadaa33be855568027c1c" %}
 
 {% set ldas_tools_al_version = "2.6.3" %}
 {% set ldas_tools_cmake_version = "1.0.8" %}
 
 package:
-  name: "{{ name }}"
-  version: "{{ version }}"
+  name: {{ name }}
+  version: {{ version }}
 
 source:
-  url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
-  sha256: "{{ sha256 }}"
+  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-ldasgen", max_pin="x.x") }}
@@ -42,12 +42,12 @@ test:
     - pkg-config --print-errors --modversion ldastools-ldasgen  # [unix]
 
 about:
-  home: "https://wiki.ligo.org/Computing/LDASTools"
-  dev_url: "https://git.ligo.org/ldastools/LDAS_Tools"
-  license: "GPL-2.0-or-later"
-  license_family: "GPL"
-  license_file: "COPYING"
-  summary: "Filters library used by ldas-tools"
+  home: https://wiki.ligo.org/Computing/LDASTools
+  dev_url: https://git.ligo.org/ldastools/LDAS_Tools
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: COPYING
+  summary: Filters library used by ldas-tools
   description: |
     This provides the runtime libraries for the filters library.
 
