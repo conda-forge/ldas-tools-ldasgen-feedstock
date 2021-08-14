@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ldas-tools-ldas
 
 Summary: Filters library used by ldas-tools
 
-Development: https://git.ligo.org/ldastools/LDAS_Tools
+Development: https://git.ligo.org/ldastools/LDAS_Tools.git
 
 This provides the runtime libraries for the filters library.
 
