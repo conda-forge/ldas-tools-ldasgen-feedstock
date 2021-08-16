@@ -2,7 +2,7 @@
 {% set version = "2.7.2" %}
 {% set sha256 = "68fbd227b45468aa6ea4a1519b42e13cdf55eed2567b5a2f6fbe7fdc908d748e" %}
 
-{% set ldas_tools_al_version = "2.6.5" %}
+{% set ldas_tools_al_version = "2.6.6" %}
 {% set ldas_tools_cmake_version = "1.2.2" %}
 
 package:
