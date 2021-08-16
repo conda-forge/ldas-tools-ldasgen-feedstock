@@ -1,8 +1,8 @@
 {% set name = "ldas-tools-ldasgen" %}
-{% set version = "2.7.1" %}
-{% set sha256 = "0d5f3404354636fd3a35a9408fc477143a4462cff54cadaa33be855568027c1c" %}
+{% set version = "2.7.2" %}
+{% set sha256 = "68fbd227b45468aa6ea4a1519b42e13cdf55eed2567b5a2f6fbe7fdc908d748e" %}
 
-{% set ldas_tools_al_version = "2.6.5" %}
+{% set ldas_tools_al_version = "2.6.6" %}
 {% set ldas_tools_cmake_version = "1.2.2" %}
 
 package:
@@ -26,11 +26,8 @@ requirements:
     - pkg-config  # [unix]
   host:
     - boost-cpp
-    - flex
     - ldas-tools-al >={{ ldas_tools_al_version }}
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
-    - openssl
-    - zlib
   run:
     - ldas-tools-al >={{ ldas_tools_al_version }}
 
