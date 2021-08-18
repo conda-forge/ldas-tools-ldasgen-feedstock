@@ -19,7 +19,7 @@ cmake \
 cmake --build . --parallel ${CPU_COUNT} --verbose
 
 # test
-ctest --parallel ${CPU_COUNT} --verbose
+ctest --verbose
 
 # install
 cmake --build . --parallel ${CPU_COUNT} --verbose --target install
