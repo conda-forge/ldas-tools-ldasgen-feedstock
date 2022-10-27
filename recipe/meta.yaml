@@ -13,7 +13,7 @@ source:
   sha256: af3b90cdcf647f7091dadcd247185637791c00939174c1c7836ca3700387e7aa
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-ldasgen", max_pin="x.x") }}

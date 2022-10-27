@@ -21,7 +21,7 @@ cmake \
 cmake --build . --parallel ${CPU_COUNT} --verbose
 
 # test
-if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 	ctest --verbose || {
 	if [ "$(uname)" == "Linux" ]; then
 		# see https://git.ligo.org/ldastools/LDAS_Tools/-/issues/124
