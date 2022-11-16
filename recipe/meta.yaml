@@ -13,10 +13,12 @@ source:
   sha256: af3b90cdcf647f7091dadcd247185637791c00939174c1c7836ca3700387e7aa
 
 build:
-  number: 1
-  skip: true  # [win]
+  error_overdepending: true
+  error_overlinking: true
+  number: 2
   run_exports:
     - {{ pin_subpackage("ldas-tools-ldasgen", max_pin="x.x") }}
+  skip: true  # [win]
 
 requirements:
   build:
@@ -25,7 +27,7 @@ requirements:
     - make  # [unix]
     - pkg-config  # [unix]
   host:
-    - boost-cpp
+    - boost-cpp >=1.67
     - ldas-tools-al >={{ ldas_tools_al_version }}
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
   run:
