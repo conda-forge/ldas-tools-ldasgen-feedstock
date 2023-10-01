@@ -1,11 +1,11 @@
-About ldas-tools-ldasgen
-========================
+About ldas-tools-ldasgen-feedstock
+==================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ldas-tools-ldasgen-feedstock/blob/main/LICENSE.txt)
 
 Home: https://wiki.ligo.org/Computing/LDASTools
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ldas-tools-ldasgen-feedstock/blob/main/LICENSE.txt)
 
 Summary: Filters library used by ldas-tools
 
