@@ -1,8 +1,8 @@
 {% set name = "ldas-tools-ldasgen" %}
-{% set version = "2.7.3" %}
+{% set version = "2.7.4" %}
 
-{% set ldas_tools_al_version = "2.6.7" %}
-{% set ldas_tools_cmake_version = "1.2.3" %}
+{% set ldas_tools_al_version = "2.7.0" %}
+{% set ldas_tools_cmake_version = "1.3.1" %}
 
 package:
   name: {{ name }}
@@ -10,12 +10,12 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: af3b90cdcf647f7091dadcd247185637791c00939174c1c7836ca3700387e7aa
+  sha256: 37d408973b641138c07a9dc13fa2a91b26a6aa5da5a0855356fef8808664e0c9
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 4
+  number: 0
   run_exports:
     - {{ pin_subpackage("ldas-tools-ldasgen", max_pin="x.x") }}
   skip: true  # [win]
