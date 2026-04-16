@@ -13,7 +13,6 @@ Development: https://git.ligo.org/ldastools/LDAS_Tools.git
 
 This provides the runtime libraries for the filters library.
 
-
 Current build status
 ====================
 
