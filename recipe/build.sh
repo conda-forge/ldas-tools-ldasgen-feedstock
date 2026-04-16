@@ -18,7 +18,8 @@ cmake --build . --parallel ${CPU_COUNT} --verbose
 
 # test
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-  ctest --verbose
+  export TEST_VERBOSE_MODE="true"
+  ctest --verbose --verbose --output-on-failure
 fi
 
 # install
