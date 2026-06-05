@@ -1,0 +1,66 @@
+Preserve errno across logging calls in lStat::eval()
+
+The tlstat test fails on macOS-15 x86_64 because GenericAPI::LStat reports
+errno 22 (EINVAL) instead of 2 (ENOENT) when called on a missing path.
+The root cause is that SystemCallTask::operator()() captures m_errNo from
+the thread-local errno *after* eval() returns. eval() invokes
+QUEUE_LOG_MESSAGE between the stat/lstat call and the function return,
+and on macOS-15 x86_64 the libc / Boost.Log code path inside that macro
+clobbers errno before m_errNo is snapshotted. Linux and macOS-15 arm64
+happen to leave errno untouched, so the bug only surfaces here.
+
+Fix: snapshot errno into a local immediately after stat/lstat, use that
+local in the log message, and restore errno before returning so the
+post-eval capture in SystemCallTask sees the real value.
+
+Tracked upstream at
+https://git.ligo.org/computing/ldastools/LDAS_Tools/-/issues/268
+(filed alongside the ldas-tools-ldasgen v2.7.6 conda-forge bump).
+
+--- a/src/Stat.cc
++++ b/src/Stat.cc
+@@ -270,6 +270,7 @@
+         std::ostringstream name;
+
+         int retcode = -1;
++        int saved_errno = 0;
+
+         switch ( m_mode )
+         {
+@@ -278,12 +279,13 @@
+
+             taskName( name.str( ).c_str( ) );
+             retcode = stat( m_path.c_str( ), &m_statbuf );
++            saved_errno = errno;
+             if ( retcode != 0 )
+             {
+                 QUEUE_LOG_MESSAGE( "MODE_STAT:"
+                                        << " path: " << m_path
+                                        << " retcode: " << retcode
+-                                       << " errno: " << errno << " msg: "
++                                       << " errno: " << saved_errno << " msg: "
+                                        << LDASTools::System::ErrnoMessage( ),
+                                    MT_NOTE,
+                                    0,
+@@ -296,12 +298,13 @@
+
+             taskName( name.str( ).c_str( ) );
+             retcode = lstat( m_path.c_str( ), &m_statbuf );
++            saved_errno = errno;
+             if ( retcode != 0 )
+             {
+                 QUEUE_LOG_MESSAGE( "MODE_LSTAT:"
+                                        << " path: " << m_path
+                                        << " retcode: " << retcode
+-                                       << " errno: " << errno << " msg: "
++                                       << " errno: " << saved_errno << " msg: "
+                                        << LDASTools::System::ErrnoMessage( ),
+                                    MT_NOTE,
+                                    0,
+@@ -312,6 +315,7 @@
+         default:
+             break;
+         }
++        errno = saved_errno;
+         return retcode;
+     }
