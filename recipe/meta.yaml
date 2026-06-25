@@ -1,5 +1,5 @@
 {% set name = "ldas-tools-ldasgen" %}
-{% set version = "2.7.6" %}
+{% set version = "2.7.7" %}
 
 {% set ldas_tools_al_version = "2.8.0" %}
 {% set ldas_tools_cmake_version = "1.4.0" %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: f9f8d744cdf7720e3730b15947060888dc7c1efea16aa3573e62fd0887b3c3a6
+  sha256: 505e6f6190e74e004c68b7e7d1501b3056808710b5f682fa8e73d0876793f3cd
   patches:
     - stat-preserve-errno.patch
 
