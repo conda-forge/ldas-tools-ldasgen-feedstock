@@ -13,8 +13,6 @@ package:
 source:
   url: https://software.ligo.org/sources/source/${{ name }}-${{ version }}.tar.gz
   sha256: 505e6f6190e74e004c68b7e7d1501b3056808710b5f682fa8e73d0876793f3cd
-  patches:
-    - stat-preserve-errno.patch
 
 build:
   dynamic_linking:
