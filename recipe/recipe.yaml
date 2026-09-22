@@ -1,18 +1,17 @@
 schema_version: 1
 
 context:
-  name: ldas-tools-ldasgen
-  version: 2.7.7
+  version: "2.7.8"
   ldas_tools_al_version: 2.10.0
-  ldas_tools_cmake_version: 1.5.0
+  ldas_tools_cmake_version: 1.5.1
 
 package:
-  name: ${{ name }}
+  name: ldas-tools-ldasgen
   version: ${{ version }}
 
 source:
-  url: https://software.ligo.org/sources/source/${{ name }}-${{ version }}.tar.gz
-  sha256: 505e6f6190e74e004c68b7e7d1501b3056808710b5f682fa8e73d0876793f3cd
+  url: https://software.ligo.org/sources/source/ldas-tools-ldasgen-${{ version }}.tar.gz
+  sha256: aece9fc8a9878853cf9615c67a8db31d6245605923ce26da8f1ac3a690f1625c
 
 build:
   dynamic_linking:
@@ -45,15 +44,13 @@ tests:
       - pkg-config --print-errors --exact-version ${{ version }} ldastools-ldasgen
 
 about:
-  license: GPL-2.0-or-later
-  license_file: COPYING
   summary: Filters library used by ldas-tools
   description: |
     This provides the runtime libraries for the filters library.
-
-
   homepage: https://wiki.ligo.org/Computing/LDASTools
   repository: https://git.ligo.org/ldastools/LDAS_Tools.git
+  license: GPL-2.0-or-later
+  license_file: COPYING
 
 extra:
   recipe-maintainers:
